@@ -58,12 +58,11 @@
 // Scroll to section on link click
 
 // Set sections as active
-
+document.addEventListener('DOMContentLoaded', () => {
 const navbarList = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
 const navbarFrag = document.createDocumentFragment();
-for (const section of sections) 
-{
+sections.forEach(section=>{
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.className = 'menu__link';
@@ -71,7 +70,7 @@ for (const section of sections)
     a.textContent  = section.dataset.nav;
     li.appendChild(a);
     navbarFrag.appendChild(li);
-};
+}); 
 navbarList.appendChild(navbarFrag);
 
 navbarList.addEventListener('click',(event)=>{
@@ -82,4 +81,27 @@ navbarList.addEventListener('click',(event)=>{
             behavior :'smooth'
         });
     }
+});
+
+// Add active state on scroll
+window.addEventListener('scroll', () => {
+    let currentSection = null;
+
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop >= 0 && sectionTop <= 300) {
+        currentSection = section;
+      }
+    });
+
+    sections.forEach(section => {
+      if (section === currentSection) {
+        section.classList.add('active');
+        document.querySelector(`a[href="#${section.id}"]`).classList.add('active');
+      } else {
+        section.classList.remove('active');
+        document.querySelector(`a[href="#${section.id}"]`).classList.remove('active');
+      }
+    });
+  });
 });

@@ -68,10 +68,12 @@ section {
     padding-left: 0;
     margin: 0;
     text-align: right;
+    
 }
 
 .navbar__menu li {
     display: inline-block;
+    
 }
 
 .navbar__menu .menu__link {
@@ -80,6 +82,7 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    font-size: 0.9em;
 }
 
 .navbar__menu .menu__link:hover {
