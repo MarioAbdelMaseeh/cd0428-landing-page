@@ -67,7 +67,7 @@ sections.forEach(section=>{
     const a = document.createElement('a');
     a.className = 'menu__link';
     a.href = `#${section.id}`;
-    a.textContent  = section.dataset.nav;
+    a.innerHTML  = section.dataset.nav;
     li.appendChild(a);
     navbarFrag.appendChild(li);
 }); 
