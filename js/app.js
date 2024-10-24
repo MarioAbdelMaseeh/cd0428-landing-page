@@ -59,4 +59,27 @@
 
 // Set sections as active
 
+const navbarList = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const navbarFrag = document.createDocumentFragment();
+for (const section of sections) 
+{
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.className = 'menu__link';
+    a.href = `#${section.id}`;
+    a.textContent  = section.dataset.nav;
+    li.appendChild(a);
+    navbarFrag.appendChild(li);
+};
+navbarList.appendChild(navbarFrag);
 
+navbarList.addEventListener('click',(event)=>{
+    event.preventDefault();
+    if (event.target.tagName === 'A')
+    {
+        document.querySelector(event.target.getAttribute('href')).scrollIntoView({
+            behavior :'smooth'
+        });
+    }
+});
