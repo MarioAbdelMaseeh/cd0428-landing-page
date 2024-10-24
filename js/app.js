@@ -22,7 +22,9 @@
  * Define Global Variables
  * 
 */
-
+const navbarList = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const navbarFrag = document.createDocumentFragment();
 
 /**
  * End Global Variables
@@ -38,53 +40,36 @@
  * 
 */
 
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-document.addEventListener('DOMContentLoaded', () => {
-const navbarList = document.getElementById('navbar__list');
-const sections = document.querySelectorAll('section');
-const navbarFrag = document.createDocumentFragment();
+// build the nav and menu
 sections.forEach(section=>{
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.className = 'menu__link';
-    a.href = `#${section.id}`;
-    a.innerHTML  = section.dataset.nav;
-    li.appendChild(a);
-    navbarFrag.appendChild(li);
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.className = 'menu__link';
+  a.href = `#${section.id}`;
+  a.innerHTML  = section.dataset.nav;
+  li.appendChild(a);
+  navbarFrag.appendChild(li);
 }); 
 navbarList.appendChild(navbarFrag);
 
-navbarList.addEventListener('click',(event)=>{
-    event.preventDefault();
-    if (event.target.tagName === 'A')
-    {
-        document.querySelector(event.target.getAttribute('href')).scrollIntoView({
-            behavior :'smooth'
-        });
-    }
-});
 
-// Add active state on scroll
-window.addEventListener('scroll', () => {
+
+
+
+// Scroll to section on link click
+navbarList.addEventListener('click',(event)=>{
+  event.preventDefault();
+  if (event.target.tagName === 'A')
+  {
+    // Scroll to anchor ID using scrollTO event
+      document.querySelector(event.target.getAttribute('href')).scrollIntoView({
+          behavior :'smooth'
+      });
+  }
+
+  // Add class 'active' to section when near top of viewport
+
+  window.addEventListener('scroll', () => {
     let currentSection = null;
 
     sections.forEach(section => {
@@ -93,7 +78,7 @@ window.addEventListener('scroll', () => {
         currentSection = section;
       }
     });
-
+// Set sections as active
     sections.forEach(section => {
       if (section === currentSection) {
         section.classList.add('your-active-class');
@@ -105,3 +90,20 @@ window.addEventListener('scroll', () => {
     });
   });
 });
+/**
+ * End Main Functions
+ * Begin Events
+ * 
+*/
+
+// Build menu 
+
+
+
+
+
+
+
+
+
+
