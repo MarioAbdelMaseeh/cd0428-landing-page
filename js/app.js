@@ -92,11 +92,7 @@ navbarList.addEventListener('click',(event)=>{
 });
 /**
  * End Main Functions
- * Begin Events
- * 
 */
-
-// Build menu 
 
 
 
