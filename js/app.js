@@ -89,18 +89,18 @@ window.addEventListener('scroll', () => {
 
     sections.forEach(section => {
       const sectionTop = section.getBoundingClientRect().top;
-      if (sectionTop >= 0 && sectionTop <= 300) {
+      if (sectionTop >= -100 && sectionTop <= 300) {
         currentSection = section;
       }
     });
 
     sections.forEach(section => {
       if (section === currentSection) {
-        section.classList.add('active');
-        document.querySelector(`a[href="#${section.id}"]`).classList.add('active');
+        section.classList.add('your-active-class');
+        document.querySelector(`a[href="#${section.id}"]`).classList.add('your-active-class');
       } else {
-        section.classList.remove('active');
-        document.querySelector(`a[href="#${section.id}"]`).classList.remove('active');
+        section.classList.remove('your-active-class');
+        document.querySelector(`a[href="#${section.id}"]`).classList.remove('your-active-class');
       }
     });
   });
